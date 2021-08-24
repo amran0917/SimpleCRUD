@@ -1,0 +1,63 @@
+@model IEnumerable<SingularityMVC.Controllers.User>    
+    
+@{    
+    ViewBag.Title = "Index";    
+}    
+    
+<div>Index</div>    
+    
+<p class="text-right">    
+    @Html.ActionLink("Create New", "Create")    
+</p>    
+    
+@if (ViewBag.Message != null)    
+{    
+    
+<div class="alert alert-success" role="alert">    
+    @ViewBag.Message    
+</div>    
+}    
+    
+    
+<table class="table">    
+    <tr>    
+        <th>    
+            @Html.DisplayNameFor(model => model.UserName)    
+        </th>    
+        <th>    
+            @Html.DisplayNameFor(model => model.UserSalary)    
+        </th>    
+        <th>    
+            @Html.DisplayNameFor(model => model.UserCity)    
+        </th>    
+        <th></th>    
+    </tr>    
+    
+    
+    @if (Model != null && Model.Count() > 0)    
+    {    
+        foreach (var item in Model)    
+        {    
+            <tr>    
+                <td>    
+                    @Html.DisplayFor(modelItem => item.userName)    
+                </td>    
+                <td>    
+                    @Html.DisplayFor(modelItem => item.userSalary)    
+                </td>    
+                <td>    
+                    @Html.DisplayFor(modelItem => item.userCity)    
+                </td>    
+                <td>    
+                    @Html.ActionLink("Edit", "Edit", new { id = item.userId }) |    
+                    @Html.ActionLink("Details", "View", new { id = item.userId }) |    
+                    @Html.ActionLink("Delete", "Delete", new { id = item.userId })    
+                </td>    
+            </tr>    
+        }    
+    }    
+    else    
+    {    
+        <td colspan="4" class="text-center"><b>No Data Available . Please Add Data By CLick On Create Button</b></td>    
+    }    
+</table>  
